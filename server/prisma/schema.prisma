@@ -16,6 +16,13 @@ model User {
   email    String @unique
   password String
 
+  @@map("users")
+}
+
+model Patient {
+  id   String @id @default(uuid())
+  name String
+
   weight Float  @default(0.00)
   height String
   imc    String
@@ -23,5 +30,5 @@ model User {
   status_description String
   blood_type         String
 
-  @@map("users")
+  @@map("patients")
 }
