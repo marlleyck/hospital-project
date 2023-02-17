@@ -1,7 +1,7 @@
 import express from "express";
 import { prisma } from "./../lib/prisma";
 import bcrypt from "bcrypt";
-import jwt, { Secret } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 import { UserType } from "../@types/UserType";
 
