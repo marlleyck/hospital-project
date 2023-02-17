@@ -16,5 +16,12 @@ model User {
   email    String @unique
   password String
 
+  weight Float
+  height String
+  imc    String
+
+  status_description String
+  blood_type         String
+
   @@map("users")
 }
