@@ -15,4 +15,6 @@ router.post("/auth/user", loginUser);
 // Private Routes
 router.get("/user/:id", checkToken, getUserById);
 
+router.post("/user");
+
 export default router;

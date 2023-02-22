@@ -30,5 +30,7 @@ model Patient {
   status_description String
   blood_type         String
 
+  doctor String
+
   @@map("patients")
 }
