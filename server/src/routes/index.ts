@@ -1,6 +1,6 @@
 import express from "express";
 import { getHello, createUser, loginUser } from "../controllers/authController";
-import { getUserById } from "../controllers/userController";
+import { getUserById, createPatient } from "../controllers/userController";
 import { checkToken } from "../middlewares/checkToken";
 
 const router = express.Router();
@@ -15,6 +15,6 @@ router.post("/auth/user", loginUser);
 // Private Routes
 router.get("/user/:id", checkToken, getUserById);
 
-router.post("/user");
+router.post("/user/patient", checkToken, createPatient);
 
 export default router;

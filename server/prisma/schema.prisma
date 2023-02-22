@@ -25,7 +25,7 @@ model Patient {
 
   weight Float  @default(0.00)
   height Float  @default(0.00)
-  imc    String
+  imc    Float?
 
   status_description String
   blood_type         String
