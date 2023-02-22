@@ -1,7 +1,7 @@
-import express from "express";
+import { Request, Response } from "express";
 import { prisma } from "./../lib/prisma";
 
-export async function getUserById(req: express.Request, res: express.Response) {
+export async function getUserById(req: Request, res: Response) {
   const { id } = req.params;
 
   const user = await prisma.user.findFirst({

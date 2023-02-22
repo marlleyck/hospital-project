@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
-import express from "express";
+import { Request, Response, NextFunction } from "express";
 
 export async function checkToken(
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) {
   const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(" ")[1];

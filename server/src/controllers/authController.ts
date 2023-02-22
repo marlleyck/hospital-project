@@ -1,15 +1,15 @@
-import express from "express";
+import { Request, Response } from "express";
 import { prisma } from "./../lib/prisma";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import { UserType } from "../@types/UserType";
 
-export function getHello(req: express.Request, res: express.Response) {
+export function getHello(req: Request, res: Response) {
   return res.send("Hello!");
 }
 
-export async function createUser(req: express.Request, res: express.Response) {
+export async function createUser(req: Request, res: Response) {
   const { id, name, email, password, confirmPassword } = req.body;
 
   // Validations
@@ -64,7 +64,7 @@ export async function createUser(req: express.Request, res: express.Response) {
   return res.status(201).send({ newUser });
 }
 
-export async function loginUser(req: express.Request, res: express.Response) {
+export async function loginUser(req: Request, res: Response) {
   const { email, password } = req.body;
 
   if (!email) {
