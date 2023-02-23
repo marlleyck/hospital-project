@@ -66,8 +66,8 @@ export async function createPatient(req: Request, res: Response) {
 
   // Create patient
   const patient = await prisma.patient.create({
-    data: patientObj,
+    data: patientObj as any,
   });
 
-  return res.send({});
+  return res.send({ patient });
 }
