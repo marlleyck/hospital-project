@@ -1,12 +1,18 @@
 import express from "express";
 import { getHello, createUser, loginUser } from "../controllers/authController";
-import { getUserById, createPatient } from "../controllers/userController";
+import {
+  getUserById,
+  createPatient,
+  getEvery,
+} from "../controllers/userController";
 import { checkToken } from "../middlewares/checkToken";
 
 const router = express.Router();
 
 // Public Routes
 router.get("/", getHello);
+
+router.get("/users", getEvery);
 
 router.post("/auth/register", createUser);
 

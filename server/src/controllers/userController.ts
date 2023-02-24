@@ -71,3 +71,9 @@ export async function createPatient(req: Request, res: Response) {
 
   return res.send({ patient });
 }
+
+export async function getEvery(req: Request, res: Response) {
+  const users = await prisma.patient.findMany();
+
+  return res.send(users);
+}
