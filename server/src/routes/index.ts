@@ -3,7 +3,7 @@ import { getHello, createUser, loginUser } from "../controllers/authController";
 import {
   getUserById,
   createPatient,
-  getEvery,
+  getPatients,
 } from "../controllers/userController";
 import { checkToken } from "../middlewares/checkToken";
 
@@ -11,8 +11,6 @@ const router = express.Router();
 
 // Public Routes
 router.get("/", getHello);
-
-router.get("/users", getEvery);
 
 router.post("/auth/register", createUser);
 
@@ -22,5 +20,7 @@ router.post("/auth/user", loginUser);
 router.get("/user/:id", checkToken, getUserById);
 
 router.post("/user/patient", checkToken, createPatient);
+
+router.get("/patients", checkToken, getPatients);
 
 export default router;
