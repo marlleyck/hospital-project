@@ -5,13 +5,12 @@ export const Container = styled.div`
   height: 70%;
 
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
-  padding: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
 
   background-color: white;
-  border-radius: 8px;
+  border-radius: 15px;
 
   box-shadow: 2px 2px 10px gray;
 `;
