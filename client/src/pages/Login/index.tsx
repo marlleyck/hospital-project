@@ -1,3 +1,5 @@
+import { LoginForm } from "../../components/LoginForm";
+
 import { Container, Content, Title, ImageContent, FormContent } from "./styles";
 
 export const LoginPage = () => {
@@ -8,7 +10,8 @@ export const LoginPage = () => {
           <Title>Imagem aqui</Title>
         </ImageContent>
         <FormContent>
-          <Title>Form aqui</Title>
+          {/* <Title>Form aqui</Title> */}
+          <LoginForm />
         </FormContent>
       </Content>
     </Container>
