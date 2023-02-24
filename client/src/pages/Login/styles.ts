@@ -43,9 +43,13 @@ export const FormContent = styled.aside`
 
   border-radius: 0px 20px 20px 0;
 
-  background-color: #f2f6ff;
+  background-color: var(--bg-gray-300);
 
   box-shadow: 8px 8px 40px gray;
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: var(--title-form);
+`;

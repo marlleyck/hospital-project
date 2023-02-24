@@ -3,3 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --title-form: #7b8388;
+  --bg-gray-300: #f2f6ff;
+}
