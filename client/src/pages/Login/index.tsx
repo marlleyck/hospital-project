@@ -1,16 +1,24 @@
 import { LoginForm } from "../../components/LoginForm";
 
-import { Container, Content, Title, ImageContent, FormContent } from "./styles";
+import PlusImage from "../../assets/image.png";
+
+import {
+  Container,
+  Content,
+  Title,
+  ImageContent,
+  FormContent,
+  Image,
+} from "./styles";
 
 export const LoginPage = () => {
   return (
     <Container>
       <Content>
         <ImageContent>
-          <Title>Imagem aqui</Title>
+          <Image src={PlusImage} />
         </ImageContent>
         <FormContent>
-          {/* <Title>Form aqui</Title> */}
           <LoginForm />
         </FormContent>
       </Content>

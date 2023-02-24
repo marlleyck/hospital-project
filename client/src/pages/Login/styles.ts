@@ -48,6 +48,8 @@ export const FormContent = styled.aside`
   box-shadow: 8px 8px 40px gray;
 `;
 
+export const Image = styled.img``;
+
 export const Title = styled.h1`
   font-family: "Roboto", sans-serif;
   font-weight: normal;
