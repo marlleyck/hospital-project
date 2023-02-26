@@ -19,6 +19,7 @@ export const Description = styled.a`
   color: var(--dark-blue);
 
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     text-decoration: underline;
