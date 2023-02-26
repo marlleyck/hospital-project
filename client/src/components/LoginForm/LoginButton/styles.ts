@@ -12,10 +12,11 @@ export const Button = styled.button`
   font-size: 0.9rem;
   color: white;
 
-  background-color: var(--blue);
+  background-color: var(--dark-blue);
+  cursor: pointer;
   transition: filter 0.3s;
 
   &:hover {
-    filter: brightness(0.9);
+    filter: brightness(1.2);
   }
 `;
