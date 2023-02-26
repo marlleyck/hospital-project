@@ -1,9 +1,20 @@
-import { Container } from "./styles";
+import { RegisterForm } from "../../components/RegisterForm";
+
+import PlusImage from "../../assets/image.png";
+
+import { Container, Content, ImageContent, Image, FormContent } from "./styles";
 
 export const RegisterPage = () => {
   return (
     <Container>
-      <h1>Register</h1>
+      <Content>
+        <ImageContent>
+          <Image src={PlusImage} />
+        </ImageContent>
+        <FormContent>
+          <RegisterForm />
+        </FormContent>
+      </Content>
     </Container>
   );
 };
