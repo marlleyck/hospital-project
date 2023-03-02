@@ -7,7 +7,7 @@ export const FooterRegisterForm = () => {
 
   return (
     <Container>
-      <Description onClick={() => navigate("/login")}>Voltar</Description>
+      <Description onClick={() => navigate("/")}>Voltar</Description>
     </Container>
   );
 };
