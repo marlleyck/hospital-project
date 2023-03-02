@@ -1,1 +1,3 @@
-export type AuthContextType = {};
+export type AuthContextType = {
+  authorized: boolean | null;
+};

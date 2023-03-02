@@ -6,7 +6,7 @@ type AuthProviderProps = {
   children: JSX.Element;
 };
 
-const AuthContext = createContext({} as AuthContextType);
+export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState();
@@ -14,5 +14,9 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const [token, setToken] = useState("");
   const [authorized, setAuthorized] = useState<boolean | null>(null);
 
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ authorized }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
