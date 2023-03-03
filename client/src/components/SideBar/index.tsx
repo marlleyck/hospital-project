@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Container, Content, Title } from "./styles";
 
-export const HomeSideBar = () => {
+export const SideBar = () => {
   const navigate = useNavigate();
   return (
     <Container>
