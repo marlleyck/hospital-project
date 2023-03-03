@@ -7,6 +7,7 @@ import { LoginPage } from "./pages/Login";
 import { RegisterPage } from "./pages/Register";
 import { Home } from "./pages/Home";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { PatientsPage } from "./pages/Patients";
 
 const AppRoutes = () => {
   return (
@@ -16,6 +17,14 @@ const AppRoutes = () => {
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route
+              path="/patients"
+              element={
+                <PrivateRoute>
+                  <PatientsPage />
+                </PrivateRoute>
+              }
+            />
             <Route
               path="/home"
               element={
