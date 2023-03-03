@@ -10,6 +10,16 @@ export const PatientsPage = () => {
       <PatientsContent>
         <Patient />
         <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
+        <Patient />
       </PatientsContent>
     </Container>
   );

@@ -5,8 +5,9 @@ export const Container = styled.div`
   height: 100vh;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
+  overflow-x: hidden;
 `;
 
 export const PatientsContent = styled.div`
@@ -15,6 +16,10 @@ export const PatientsContent = styled.div`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+
+  margin-left: 20.3%;
+
+  padding-top: 5px;
 
   gap: 5px;
 `;

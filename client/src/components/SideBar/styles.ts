@@ -8,6 +8,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  position: fixed;
+
   background-color: var(--dark-blue);
 `;
 
