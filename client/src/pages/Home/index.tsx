@@ -1,4 +1,4 @@
-import { HomeSideBar } from "../../components/HomeSideBar";
+import { HomeSideBar } from "../../components/SideBar";
 
 import { Container } from "./styles";
 
