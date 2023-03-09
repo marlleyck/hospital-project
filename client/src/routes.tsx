@@ -5,7 +5,6 @@ import { AppContextProvider } from "./contexts/AppContext";
 
 import { LoginPage } from "./pages/Login";
 import { RegisterPage } from "./pages/Register";
-import { Home } from "./pages/Home";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { PatientsPage } from "./pages/Patients";
 
@@ -25,14 +24,7 @@ const AppRoutes = () => {
                 </PrivateRoute>
               }
             />
-            <Route
-              path="/home"
-              element={
-                <PrivateRoute>
-                  <Home />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/addpatient" />
           </Routes>
         </AppContextProvider>
       </AuthContextProvider>

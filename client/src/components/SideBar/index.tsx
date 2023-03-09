@@ -6,7 +6,6 @@ export const SideBar = () => {
   return (
     <Container>
       <Content>
-        <Title onClick={() => navigate("/home")}>Home</Title>
         <Title onClick={() => navigate("/addpatient")}>
           Adicionar Paciente
         </Title>

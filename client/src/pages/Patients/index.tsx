@@ -11,15 +11,6 @@ export const PatientsPage = () => {
         <Patient />
         <Patient />
         <Patient />
-        <Patient />
-        <Patient />
-        <Patient />
-        <Patient />
-        <Patient />
-        <Patient />
-        <Patient />
-        <Patient />
-        <Patient />
       </PatientsContent>
     </Container>
   );
