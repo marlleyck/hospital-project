@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 export const PatientsContent = styled.div`
@@ -17,9 +17,12 @@ export const PatientsContent = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
-  margin-left: 20.3%;
+  position: absolute;
+  left: 20%;
 
-  padding-top: 5px;
+  padding: 5px 0px;
 
   gap: 5px;
+
+  overflow: auto;
 `;
