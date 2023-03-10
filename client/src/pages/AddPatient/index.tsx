@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SideBar } from "../../components/SideBar";
 import { Button } from "../../components/Button";
 
@@ -9,9 +10,10 @@ import {
   Input,
   Label,
 } from "./styles";
+import { calculateImc } from "../../utils/calculate_imc";
 
 export const AddPatient = () => {
-  const imc = 15;
+  const [imc, setImc] = useState<number>();
 
   return (
     <Container>
@@ -42,7 +44,9 @@ export const AddPatient = () => {
               <Input value={imc} disabled type="number" />
             </Label>
           </FieldsContent>
-          <Button title="Calcular IMC" />
+          <FieldsContent onClick={() => setImc(calculateImc())}>
+            <Button title="Calcular IMC" />
+          </FieldsContent>
           <FieldsContent>
             <Label>
               Sintomas
