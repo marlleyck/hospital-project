@@ -7,6 +7,7 @@ import { LoginPage } from "./pages/Login";
 import { RegisterPage } from "./pages/Register";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { PatientsPage } from "./pages/Patients";
+import { AddPatient } from "./pages/AddPatient";
 
 const AppRoutes = () => {
   return (
@@ -24,7 +25,7 @@ const AppRoutes = () => {
                 </PrivateRoute>
               }
             />
-            <Route path="/addpatient" />
+            <Route path="/addpatient" element={<AddPatient />} />
           </Routes>
         </AppContextProvider>
       </AuthContextProvider>
