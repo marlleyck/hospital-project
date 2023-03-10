@@ -25,12 +25,13 @@ export const Content = styled.div`
 
 export const Body = styled.div`
   width: 60%;
-  height: 80%;
+  height: 90%;
 
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
+  gap: 10px;
 
   background-color: white;
   border-radius: 10px;
@@ -55,5 +56,11 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   outline: none;
+  border: 1px solid gray;
   padding: 10px;
+  border-radius: 10px;
+
+  &:focus {
+    border: 1px solid var(--dark-blue);
+  }
 `;

@@ -11,6 +11,8 @@ import {
 } from "./styles";
 
 export const AddPatient = () => {
+  const imc = 15;
+
   return (
     <Container>
       <SideBar />
@@ -37,7 +39,7 @@ export const AddPatient = () => {
           <FieldsContent>
             <Label>
               Imc
-              <Input type="number" />
+              <Input value={imc} disabled type="number" />
             </Label>
           </FieldsContent>
           <Button title="Calcular IMC" />
