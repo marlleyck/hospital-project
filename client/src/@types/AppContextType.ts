@@ -1,11 +1,11 @@
 export type AppContextType = {
   patientName: string;
   setPatientName: (name: string) => void;
-  patientWeight: number;
+  patientWeight: number | undefined;
   setPatientWeight: (weight: number) => void;
-  patientHeight: number;
+  patientHeight: number | undefined;
   setPatientHeight: (height: number) => void;
-  patientImc: number;
+  patientImc: number | undefined;
   setPatientImc: (imc: number) => void;
   patientStatus: string;
   setPatientStatus: (status: string) => void;
