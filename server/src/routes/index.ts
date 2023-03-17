@@ -17,10 +17,10 @@ router.post("/auth/register", createUser);
 router.post("/auth/user", loginUser);
 
 // Private Routes
-router.get("/user/:id", checkToken, getUserById);
+router.get("/user/:id", getUserById);
 
-router.post("/user/patient", checkToken, createPatient);
+router.post("/user/patient", createPatient);
 
-router.get("/patients", checkToken, getPatients);
+router.get("/patients", getPatients);
 
 export default router;

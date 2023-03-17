@@ -16,47 +16,54 @@ export async function getUserById(req: Request, res: Response) {
 }
 
 export async function createPatient(req: Request, res: Response) {
-  const patientObj: PatientType = req.body;
+  const {
+    id,
+    name,
+    weight,
+    height,
+    imc,
+    status_description,
+    blood_type,
+    doctor,
+    userId,
+  } = req.body;
 
   // Validations
-  if (!patientObj) {
-    return res.status(400).send({ error: "Body cannot be empty!" });
-  }
 
-  if (!patientObj.id) {
+  if (!id) {
     return res.status(400).send({ error: "ID cannot be empty!" });
   }
 
-  if (!patientObj.name) {
+  if (!name) {
     return res.status(400).send({ error: "Name cannot be empty!" });
   }
 
-  if (!patientObj.weight) {
+  if (!weight) {
     return res.status(400).send({ error: "Weight cannot be empty!" });
   }
 
-  if (!patientObj.height) {
+  if (!height) {
     return res.status(400).send({ error: "Height cannot be empty!" });
   }
 
-  if (!patientObj.status_description) {
+  if (!status_description) {
     return res
       .status(400)
       .send({ error: "Status description cannot be empty!" });
   }
 
-  if (!patientObj.blood_type) {
+  if (!blood_type) {
     return res.status(400).send({ error: "Blood type cannot be empty!" });
   }
 
-  if (!patientObj.doctor) {
+  if (!doctor) {
     return res.status(400).send({ error: "Doctor type cannot be empty!" });
   }
 
   // Validate if patient already exists
   const patientAlreadyExists = await prisma.patient.findFirst({
     where: {
-      id: patientObj.id,
+      id: id,
     },
   });
 
@@ -66,7 +73,21 @@ export async function createPatient(req: Request, res: Response) {
 
   // Create patient
   const patient = await prisma.patient.create({
-    data: patientObj as any,
+    data: {
+      id,
+      name,
+      weight,
+      height,
+      imc,
+      status_description,
+      blood_type,
+      doctor,
+      user: {
+        connect: {
+          id: userId,
+        },
+      },
+    },
   });
 
   return res.send({ patient });

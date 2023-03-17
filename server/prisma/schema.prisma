@@ -25,9 +25,9 @@ model Patient {
   id   String @id @default(uuid())
   name String
 
-  weight Float  @default(0.00)
-  height Float  @default(0.00)
-  imc    Float?
+  weight String
+  height String
+  imc    String?
 
   status_description String
   blood_type         String

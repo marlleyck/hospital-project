@@ -2,8 +2,8 @@ export type PatientType = {
   id: string;
   name: string;
 
-  weight: number;
-  height: number;
+  weight: string;
+  height: string;
   imc: string;
 
   status_description: string;
