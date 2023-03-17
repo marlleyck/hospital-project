@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
+import axios from "axios";
 
 import { AppContextType } from "../@types/AppContextType";
-import { PatientType } from "../@types/PatientType";
 
 type AppContextProviderProps = {
   children: JSX.Element;
@@ -18,8 +18,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [patientBloodType, setPatientBloodType] = useState("");
   const [patientDoctor, setPatientDoctor] = useState("");
 
-  const createPatient = () => {
-    const patient: PatientType = {
+  const createPatient = async () => {
+    const patient = {
       id: "teste1285",
       name: patientName,
       weight: patientWeight,
@@ -28,7 +28,17 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       status_description: patientStatus,
       blood_type: patientBloodType,
       doctor: patientDoctor,
+      userId: "2545gasfdg-ggasgsg125",
     };
+
+    console.log(patient);
+
+    const response = await axios.post(
+      "http://localhost:3000/api/user/patient",
+      patient
+    );
+
+    console.log(response);
   };
 
   return (
