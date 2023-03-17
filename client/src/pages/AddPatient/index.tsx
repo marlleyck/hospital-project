@@ -38,8 +38,9 @@ export const AddPatient = () => {
               Peso
               <Input
                 type="number"
+                placeholder="Ex.: 64,2"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  appContext.setPatientWeight(+e.target.value)
+                  appContext.setPatientWeight(e.target.value)
                 }
                 value={appContext.patientWeight}
               />
@@ -50,8 +51,9 @@ export const AddPatient = () => {
               Altura
               <Input
                 type="number"
+                placeholder="Ex.: 1,78"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  appContext.setPatientHeight(+e.target.value)
+                  appContext.setPatientHeight(e.target.value)
                 }
                 value={appContext.patientHeight}
               />
@@ -64,14 +66,28 @@ export const AddPatient = () => {
                 disabled
                 type="number"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  appContext.setPatientImc(+e.target.value)
+                  appContext.setPatientImc(e.target.value)
                 }
                 value={appContext.patientImc}
               />
             </Label>
           </FieldsContent>
           <FieldsContent
-            onClick={() => appContext.setPatientImc(calculateImc())}
+            onClick={() => {
+              if (
+                appContext.patientHeight !== undefined ||
+                appContext.patientWeight !== undefined
+              ) {
+                appContext.setPatientImc(
+                  calculateImc(
+                    appContext.patientHeight!,
+                    appContext.patientWeight!
+                  )
+                );
+              } else {
+                alert("Preencha todos os campos!");
+              }
+            }}
           >
             <Button title="Calcular IMC" />
           </FieldsContent>
@@ -111,7 +127,9 @@ export const AddPatient = () => {
               />
             </Label>
           </FieldsContent>
-          <Button title="Adicionar Paciente" />
+          <FieldsContent onClick={appContext.createPatient}>
+            <Button title="Adicionar Paciente" />
+          </FieldsContent>
         </Body>
       </Content>
     </Container>
