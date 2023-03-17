@@ -31,12 +31,18 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       userId: "2545gasfdg-ggasgsg125",
     };
 
-    console.log(patient);
-
     const response = await axios.post(
       "http://localhost:3000/api/user/patient",
       patient
     );
+
+    setPatientName("");
+    setPatientWeight("");
+    setPatientHeight("");
+    setPatientImc("");
+    setPatientStatus("");
+    setPatientBloodType("");
+    setPatientDoctor("");
 
     console.log(response);
   };
