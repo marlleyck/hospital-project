@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 import { AppContextType } from "../@types/AppContextType";
 
@@ -20,21 +21,21 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
   const [patients, setPatients] = useState<any>();
 
+  const fetchPatients = async () => {
+    const patientsResponse = await axios.get(
+      "http://localhost:3000/api/patients"
+    );
+
+    setPatients(patientsResponse.data.patients);
+  };
+
   useEffect(() => {
-    const fetchPatients = async () => {
-      const patientsResponse = await axios.get(
-        "http://localhost:3000/api/patients"
-      );
-
-      setPatients(patientsResponse.data.patients);
-    };
-
     fetchPatients();
   }, []);
 
   const createPatient = async () => {
     const patient = {
-      id: "teste1285",
+      id: uuidv4(),
       name: patientName,
       weight: patientWeight,
       height: patientHeight,
@@ -58,6 +59,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setPatientBloodType("");
     setPatientDoctor("");
 
+    fetchPatients();
     console.log(response);
   };
 
