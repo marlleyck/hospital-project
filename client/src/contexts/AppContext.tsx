@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 import { AppContextType } from "../@types/AppContextType";
@@ -17,6 +17,20 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [patientStatus, setPatientStatus] = useState("");
   const [patientBloodType, setPatientBloodType] = useState("");
   const [patientDoctor, setPatientDoctor] = useState("");
+
+  const [patients, setPatients] = useState<any>();
+
+  useEffect(() => {
+    const fetchPatients = async () => {
+      const patientsResponse = await axios.get(
+        "http://localhost:3000/api/patients"
+      );
+
+      setPatients(patientsResponse.data.patients);
+    };
+
+    fetchPatients();
+  }, []);
 
   const createPatient = async () => {
     const patient = {
@@ -65,6 +79,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         patientDoctor,
         setPatientDoctor,
         createPatient,
+        patients,
       }}
     >
       {children}

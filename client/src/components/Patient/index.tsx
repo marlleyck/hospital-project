@@ -1,19 +1,25 @@
 import { Container, Content, Description, Title } from "./styles";
 
-export const Patient = () => {
+type PatientProps = {
+  name: string;
+  doctor: string;
+  blood: string;
+};
+
+export const Patient = ({ name, doctor, blood }: PatientProps) => {
   return (
     <Container>
       <Content>
         <Title>Nome</Title>
-        <Description>Marlleyck Nathan</Description>
+        <Description>{name}</Description>
       </Content>
       <Content>
-        <Title>Email</Title>
-        <Description>marlleyck@hotmail.com</Description>
+        <Title>Doutor</Title>
+        <Description>{doctor}</Description>
       </Content>
       <Content>
         <Title>Sangue</Title>
-        <Description>A+</Description>
+        <Description>{blood}</Description>
       </Content>
     </Container>
   );
