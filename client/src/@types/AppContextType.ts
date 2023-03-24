@@ -15,4 +15,5 @@ export type AppContextType = {
   setPatientDoctor: (doctor: string) => void;
   createPatient: () => void;
   patients: any;
+  loginUser: () => void;
 };

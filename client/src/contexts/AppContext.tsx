@@ -1,6 +1,7 @@
-import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import { createContext, useContext, useEffect, useState } from "react";
+import { api } from "../services/api";
 import { v4 as uuidv4 } from "uuid";
+import { AuthContext } from "./AuthContext";
 
 import { AppContextType } from "../@types/AppContextType";
 
@@ -20,11 +21,11 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [patientDoctor, setPatientDoctor] = useState("");
 
   const [patients, setPatients] = useState<any>();
+  const { emailUser, passwordUser, token, setToken, idUser, setIdUser } =
+    useContext(AuthContext);
 
   const fetchPatients = async () => {
-    const patientsResponse = await axios.get(
-      "http://localhost:3000/api/patients"
-    );
+    const patientsResponse = await api.get("/patients");
 
     setPatients(patientsResponse.data.patients);
   };
@@ -46,10 +47,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       userId: "2545gasfdg-ggasgsg125",
     };
 
-    const response = await axios.post(
-      "http://localhost:3000/api/user/patient",
-      patient
-    );
+    const response = await api.post("/user/patient", patient);
 
     setPatientName("");
     setPatientWeight("");
@@ -61,6 +59,16 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     fetchPatients();
     console.log(response);
+  };
+
+  const loginUser = async () => {
+    const response = await api.post("/auth/user", {
+      email: emailUser,
+      password: passwordUser,
+    });
+
+    setToken(response.data.token);
+    setIdUser(response.data.id);
   };
 
   return (
@@ -82,6 +90,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         setPatientDoctor,
         createPatient,
         patients,
+        loginUser,
       }}
     >
       {children}

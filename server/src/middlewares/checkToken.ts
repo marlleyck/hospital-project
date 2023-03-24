@@ -1,3 +1,4 @@
+import { TokenType } from "./../@types/TokenType";
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 
@@ -17,7 +18,7 @@ export async function checkToken(
 
   try {
     const secret = process.env.SECRET as string;
-    const responseToken = jwt.verify(token, secret);
+    const responseToken = jwt.verify(token, secret) as TokenType;
     req.tokenDecoded = responseToken;
 
     next();

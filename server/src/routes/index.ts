@@ -17,7 +17,7 @@ router.post("/auth/register", createUser);
 router.post("/auth/user", loginUser);
 
 // Private Routes
-router.get("/user/:id", getUserById);
+router.get("/user", checkToken, getUserById);
 
 router.post("/user/patient", createPatient);
 

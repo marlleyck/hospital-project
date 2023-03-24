@@ -4,15 +4,15 @@ import { prisma } from "./../lib/prisma";
 import { PatientType } from "./../@types/PatientType";
 
 export async function getUserById(req: Request, res: Response) {
-  const { id } = req.params;
+  const tokenDecoded = req.tokenDecoded;
 
   const user = await prisma.user.findFirst({
     where: {
-      id: id,
+      id: tokenDecoded.id,
     },
   });
 
-  res.send({ user });
+  res.send(user);
 }
 
 export async function createPatient(req: Request, res: Response) {
