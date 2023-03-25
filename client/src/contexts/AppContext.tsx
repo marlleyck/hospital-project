@@ -21,8 +21,15 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [patientDoctor, setPatientDoctor] = useState("");
 
   const [patients, setPatients] = useState<any>();
-  const { emailUser, passwordUser, token, setToken, idUser, setIdUser } =
-    useContext(AuthContext);
+  const {
+    emailUser,
+    setEmailUser,
+    passwordUser,
+    setPasswordUser,
+    token,
+    setToken,
+    setIdUser,
+  } = useContext(AuthContext);
 
   const fetchPatients = async () => {
     const patientsResponse = await api.get("/patients");
@@ -69,6 +76,11 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     setToken(response.data.token);
     setIdUser(response.data.id);
+
+    localStorage.setItem("@hospital:token", JSON.stringify(token));
+
+    setEmailUser("");
+    setPasswordUser("");
   };
 
   return (

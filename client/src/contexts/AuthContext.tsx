@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 import { AuthContextType } from "../@types/AuthContextType";
 import { UserType } from "../@types/UserType";
@@ -19,13 +20,26 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const [token, setToken] = useState("");
   const [authorized, setAuthorized] = useState<boolean | null>(true);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const fetchUser = () => {
+    const fetchUser = async () => {
       const tokenStorage =
         JSON.parse(localStorage.getItem("@hospital:token") || "[]") ?? [];
 
+      console.log(tokenStorage);
+
       if (typeof tokenStorage === "string") {
-        const response = api.get("/auth/user");
+        const response = await api.get("/user", {
+          headers: {
+            authorization: `Bearer ${tokenStorage}`,
+          },
+        });
+        setAuthorized(true);
+        setUser(response.data);
+        navigate("/patients");
+        setToken(tokenStorage);
+
         console.log(response);
       }
     };
