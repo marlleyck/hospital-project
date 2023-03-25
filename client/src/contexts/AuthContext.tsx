@@ -14,8 +14,10 @@ export const AuthContext = createContext({} as AuthContextType);
 export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<UserType>();
   const [idUser, setIdUser] = useState("");
+  const [nameUser, setNameUser] = useState("");
   const [emailUser, setEmailUser] = useState("");
   const [passwordUser, setPasswordUser] = useState("");
+  const [confirmPasswordUser, setConfirmPasswordUser] = useState("");
 
   const [token, setToken] = useState("");
   const [authorized, setAuthorized] = useState<boolean | null>(null);
@@ -41,6 +43,8 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
         setToken(tokenStorage);
 
         console.log(response);
+      } else {
+        setAuthorized(false);
       }
     };
 
@@ -54,10 +58,14 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
         authorized,
         idUser,
         setIdUser,
+        nameUser,
+        setNameUser,
         emailUser,
         setEmailUser,
         passwordUser,
         setPasswordUser,
+        confirmPasswordUser,
+        setConfirmPasswordUser,
         token,
         setToken,
       }}

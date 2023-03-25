@@ -22,10 +22,14 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
   const [patients, setPatients] = useState<any>();
   const {
+    nameUser,
+    setNameUser,
     emailUser,
     setEmailUser,
     passwordUser,
     setPasswordUser,
+    confirmPasswordUser,
+    setConfirmPasswordUser,
     token,
     setToken,
     setIdUser,
@@ -83,6 +87,25 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setPasswordUser("");
   };
 
+  const registerUser = async () => {
+    const user = {
+      id: uuidv4(),
+      name: nameUser,
+      email: emailUser,
+      password: passwordUser,
+      confirmPassword: confirmPasswordUser,
+    };
+
+    const response = await api.post("/auth/register", user);
+
+    setNameUser("");
+    setEmailUser("");
+    setPasswordUser("");
+    setConfirmPasswordUser("");
+
+    console.log(response);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -103,6 +126,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         createPatient,
         patients,
         loginUser,
+        registerUser,
       }}
     >
       {children}

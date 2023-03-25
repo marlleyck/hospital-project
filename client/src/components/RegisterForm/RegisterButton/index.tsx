@@ -1,5 +1,14 @@
+import { useContext } from "react";
+import { AppContext } from "../../../contexts/AppContext";
+
 import { Button } from "./styles";
 
 export const RegisterButton = () => {
-  return <Button type="button">Registrar</Button>;
+  const { registerUser } = useContext(AppContext);
+
+  return (
+    <Button type="button" onClick={registerUser}>
+      Registrar
+    </Button>
+  );
 };
