@@ -16,4 +16,5 @@ export type AuthContextType = {
   setConfirmPasswordUser: (confirmPassword: string) => void;
   token: string;
   setToken: (token: string) => void;
+  fetchUser: () => void;
 };

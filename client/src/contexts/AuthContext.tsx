@@ -24,30 +24,26 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const tokenStorage =
-        JSON.parse(localStorage.getItem("@hospital:token") || "[]") ?? [];
+  const fetchUser = async () => {
+    const tokenStorage =
+      JSON.parse(localStorage.getItem("@hospital:token") || "[]") ?? [];
 
-      if (typeof tokenStorage === "string") {
-        const response = await api.get("/user", {
-          headers: {
-            authorization: `Bearer ${tokenStorage}`,
-          },
-        });
-        setAuthorized(true);
-        setUser(response.data);
-        navigate("/patients");
-        setToken(tokenStorage);
+    if (typeof tokenStorage === "string") {
+      const response = await api.get("/user", {
+        headers: {
+          authorization: `Bearer ${tokenStorage}`,
+        },
+      });
+      setAuthorized(true);
+      setUser(response.data);
+      navigate("/patients");
+      setToken(tokenStorage);
 
-        console.log(response);
-      } else {
-        setAuthorized(false);
-      }
-    };
-
-    fetchUser();
-  }, []);
+      console.log(response);
+    } else {
+      setAuthorized(false);
+    }
+  };
 
   return (
     <AuthContext.Provider
@@ -67,6 +63,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
         setConfirmPasswordUser,
         token,
         setToken,
+        fetchUser,
       }}
     >
       {children}

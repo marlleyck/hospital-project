@@ -87,8 +87,6 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setToken(tokenResponse);
     setIdUser(idResponse);
 
-    console.log(response);
-
     localStorage.setItem("@hospital:token", JSON.stringify(tokenResponse));
 
     setAuthorized(true);

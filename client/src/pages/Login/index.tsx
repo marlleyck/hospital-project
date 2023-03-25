@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { LoginForm } from "../../components/LoginForm";
 
@@ -14,7 +14,11 @@ import {
 } from "./styles";
 
 export const LoginPage = () => {
-  const { authorized } = useContext(AuthContext);
+  const { authorized, fetchUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <Container>
