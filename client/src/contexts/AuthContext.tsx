@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const [passwordUser, setPasswordUser] = useState("");
 
   const [token, setToken] = useState("");
-  const [authorized, setAuthorized] = useState<boolean | null>(true);
+  const [authorized, setAuthorized] = useState<boolean | null>(null);
 
   const navigate = useNavigate();
 
