@@ -29,8 +29,6 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
       const tokenStorage =
         JSON.parse(localStorage.getItem("@hospital:token") || "[]") ?? [];
 
-      console.log(tokenStorage);
-
       if (typeof tokenStorage === "string") {
         const response = await api.get("/user", {
           headers: {
@@ -56,6 +54,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
       value={{
         user,
         authorized,
+        setAuthorized,
         idUser,
         setIdUser,
         nameUser,

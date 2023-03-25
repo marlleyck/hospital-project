@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { v4 as uuidv4 } from "uuid";
 import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 import { AppContextType } from "../@types/AppContextType";
 
@@ -30,10 +31,12 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setPasswordUser,
     confirmPasswordUser,
     setConfirmPasswordUser,
-    token,
     setToken,
     setIdUser,
+    setAuthorized,
   } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const fetchPatients = async () => {
     const patientsResponse = await api.get("/patients");
@@ -78,10 +81,18 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       password: passwordUser,
     });
 
-    setToken(response.data.token);
-    setIdUser(response.data.id);
+    const tokenResponse = response.data.token;
+    const idResponse = response.data.id;
 
-    localStorage.setItem("@hospital:token", JSON.stringify(token));
+    setToken(tokenResponse);
+    setIdUser(idResponse);
+
+    console.log(response);
+
+    localStorage.setItem("@hospital:token", JSON.stringify(tokenResponse));
+
+    setAuthorized(true);
+    navigate("/patients");
 
     setEmailUser("");
     setPasswordUser("");
