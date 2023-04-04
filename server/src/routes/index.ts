@@ -4,6 +4,7 @@ import {
   getUserById,
   createPatient,
   getPatients,
+  getPatient,
 } from "../controllers/userController";
 import { checkToken } from "../middlewares/checkToken";
 
@@ -16,11 +17,13 @@ router.post("/auth/register", createUser);
 
 router.post("/auth/user", loginUser);
 
+router.get("/patients", getPatients);
+
+router.get("/patient/:id", getPatient);
+
 // Private Routes
 router.get("/user", checkToken, getUserById);
 
 router.post("/user/patient", createPatient);
-
-router.get("/patients", getPatients);
 
 export default router;

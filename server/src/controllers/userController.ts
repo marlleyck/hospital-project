@@ -98,3 +98,15 @@ export async function getPatients(req: Request, res: Response) {
 
   return res.send({ patients });
 }
+
+export async function getPatientById(req: Request, res: Response) {
+  const { id } = req.params;
+
+  const patient = await prisma.patient.findFirst({
+    where: {
+      id: id,
+    },
+  });
+
+  return res.send({ patient });
+}
