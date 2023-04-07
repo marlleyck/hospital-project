@@ -17,6 +17,7 @@ export const PatientsPage = () => {
             patients.map((patient: any) => (
               <Patient
                 key={patient.id}
+                id={patient.id}
                 name={patient.name}
                 doctor={patient.doctor}
                 blood={patient.blood_type}

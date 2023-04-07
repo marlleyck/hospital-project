@@ -1,14 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
 import { Container, Content, Description, Title } from "./styles";
 
 type PatientProps = {
+  id: string;
   name: string;
   doctor: string;
   blood: string;
 };
 
-export const Patient = ({ name, doctor, blood }: PatientProps) => {
+export const Patient = ({ id, name, doctor, blood }: PatientProps) => {
+  const navigate = useNavigate();
+
+  const handleOpenPatientInfos = () => {
+    navigate(`/patient/${id}`);
+  };
+
   return (
-    <Container>
+    <Container onClick={handleOpenPatientInfos}>
       <Content>
         <Title>Nome</Title>
         <Description>{name}</Description>

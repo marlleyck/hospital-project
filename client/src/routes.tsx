@@ -8,6 +8,8 @@ import { RegisterPage } from "./pages/Register";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { PatientsPage } from "./pages/Patients";
 import { AddPatient } from "./pages/AddPatient";
+import { Patient } from "./components/Patient";
+import { PatientPage } from "./pages/Patient";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +28,7 @@ const AppRoutes = () => {
               }
             />
             <Route path="/addpatient" element={<AddPatient />} />
+            <Route path="/patient/:id" element={<PatientPage />} />
           </Routes>
         </AppContextProvider>
       </AuthContextProvider>
