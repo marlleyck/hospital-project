@@ -1,4 +1,8 @@
+import { PatientType } from "./PatientType";
+
 export type AppContextType = {
+  patient: PatientType | null;
+  setPatient: (patient: PatientType) => void;
   patientName: string;
   setPatientName: (name: string) => void;
   patientWeight: string | undefined;

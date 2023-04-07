@@ -5,6 +5,7 @@ import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
 
 import { AppContextType } from "../@types/AppContextType";
+import { PatientType } from "../@types/PatientType";
 
 type AppContextProviderProps = {
   children: JSX.Element;
@@ -13,6 +14,8 @@ type AppContextProviderProps = {
 export const AppContext = createContext({} as AppContextType);
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
+  const [patient, setPatient] = useState<PatientType | null>(null);
+
   const [patientName, setPatientName] = useState("");
   const [patientWeight, setPatientWeight] = useState("");
   const [patientHeight, setPatientHeight] = useState("");
@@ -22,6 +25,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [patientDoctor, setPatientDoctor] = useState("");
 
   const [patients, setPatients] = useState<any>();
+
   const {
     nameUser,
     setNameUser,
@@ -118,6 +122,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   return (
     <AppContext.Provider
       value={{
+        patient,
+        setPatient,
         patientName,
         setPatientName,
         patientWeight,
