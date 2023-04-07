@@ -115,7 +115,7 @@ export const AddPatientForm = () => {
         </Label>
       </FieldsContent>
       <FieldsContent onClick={appContext.createPatient}>
-        <Button title="Adicionar Paciente" />
+        <Button title="Concluído" />
       </FieldsContent>
     </Body>
   );
